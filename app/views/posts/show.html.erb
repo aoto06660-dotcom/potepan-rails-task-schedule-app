@@ -1,0 +1,33 @@
+<div>
+  <section>
+    <a><%= link_to "一覧へ戻る", posts_path %></a>
+   
+    <div class= "PageTitle" >
+      <h2>
+        <%= @post.title %>
+      </h2>
+        
+      <%= link_to "編集", edit_post_path(@post) %>
+    </div>
+
+    <div>
+      <table>
+        <tr>
+          <th>開始日</th>
+          <th>終了日</th>
+          <th>終日</th>
+          <th>スケジュールメモ</th>
+        </tr>
+
+        <tr>
+          <td><%= @post.start_date.strftime("%Y/%m/%d") %></td>
+          <td><%= @post.end_date.strftime("%Y/%m/%d") %></td>
+          <td><%= @post.all_day ? "○" : "" %></td>
+          <td><%= @post.body %></td>
+        </tr>
+        
+      </table>
+    </div>
+  </section>
+</div>
+
