@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ .schedule-table th,
+ .schedule-table td {
+  padding: 16px;
+ }

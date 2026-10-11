@@ -1,39 +1,60 @@
-<%= form_with model: post do |form| %>
-  <% if post.errors.any? %>
-    <ul class = "errors">
-      <% post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<div class="mb-3">
+
+  <%= form_with model: post do |form| %>
+    <% if post.errors.any? %>
+      <ul class = "errors">
+        <% post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :title, "タイトル", class: "form-label fw-bold" %>
+      <span class="text-danger">*</span>
+      <%= form.text_field :title,
+          class: "form-control",
+          placeholder: "タイトル" %>
+    </div>
+    
+    <div class= "row mb-3">
+
+      <div class="col-md-6">
+        <%= form.label :start_date, "開始日", class: "form-label fw-bold" %>
+        <span class="text-danger">*</span>
+        <%= form.date_field :start_date, class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <%= form.label :end_date, "終了日", class: "form-label fw-bold" %>
+        <span class="text-danger">*</span>
+        <%= form.date_field :end_date, class: "form-control" %>
+      </div>
+
+    </div>
+
+    <div class= "mb-3">
+      <%= form.label :all_day, "終日の場合はチェックを入れます", class: "fw-bold" %>
+      <%= form.check_box :all_day %>
+    </div>
+
+    <div class="row-mb-3">
+      <%= form.label :body, "スケジュールメモ", class: "form-label fw-bold" %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+    
+    <div class="d-flex justify-content-end gap2 mt-3">
+
+      <div>
+        <%= link_to "キャンセル", posts_path, class: "btn btn-light" %>
+      </div>
+
+      <div>
+        <%= form.submit "保存", class: "btn btn-primary" %>
+      </div>
+
+    </div>
+
   <% end %>
 
-  <div>
-    <%= form.label :title, "タイトル" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :start_date, "開始日" %>
-    <%= form.date_field :start_date %>
-  </div>
-
-  <div>
-    <%= form.label :end_date, "終了日" %>
-    <%= form.date_field :end_date %>
-  </div>
-
-  <div>
-    <%= form.label :all_day, "終日の場合はチェックを入れます" %>
-    <%= form.check_box :all_day %>
-  </div>
-
-  <div>
-    <%= form.label :body, "スケジュールメモ" %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-
-<% end %>
+</div>
