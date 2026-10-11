@@ -30,6 +30,15 @@
       </h3>
       </div>
     </header>
+
+    <% flash.each do |type, msg| %>
+      <div class="container mt-3">
+        <div class="alert <%= type == "notice" ? "alert-success" : "alert-danger" %> w-50 mx-auto text-center" >
+          <%= msg %>
+        </div>
+      </div>
+    <% end %>
+        
     <%= yield %>
   </body>
 </html>
